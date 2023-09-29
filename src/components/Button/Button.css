@@ -1,0 +1,14 @@
+.btn-confirm {
+  background: #44b26f;
+  color: #ffffff;
+  width: 285px;
+  height: 50px;
+  position: relative;
+  top: 122px;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 29px;
+  letter-spacing: 0em;
+}
