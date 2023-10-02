@@ -1,5 +1,5 @@
 import "./Input.css";
-import logoImage from "../../assets/Logo/Logo_password.svg";
+import logoImage from "../../assets/Logo_password.svg";
 
 const InputName = () => {
   return <input type="text" className="input name" placeholder="Ures Name"></input>;
