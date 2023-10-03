@@ -1,16 +1,21 @@
 import "./Input.css";
-import logoImage from "../../assets/Logo_password.svg";
+import { AiFillEye } from "react-icons/ai";
 
 const InputName = () => {
-  return <input type="text" className="input name" placeholder="Ures Name"></input>;
+  return (
+    <input type="text" className="input name" placeholder="Ures Name"></input>
+  );
 };
 
 const InputPassword = () => {
   return (
     <div>
-      <input type="password" className="input password" placeholder="Password"></input>
+      <input
+        type="password"
+        className="input password"
+        placeholder="Password"></input>
       <div className="logo-password">
-        <img src={logoImage} alt="Logo" />
+        <AiFillEye className="logo" />
       </div>
     </div>
   );

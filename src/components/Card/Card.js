@@ -1,4 +1,4 @@
-import Logo from "../Logo/Logo";
+import { LogoLogin } from "../Logo/Logo";
 import { InputName, InputPassword } from "../Input/Input";
 import Button from "../Button/Button";
 import "./Card.css";
@@ -6,7 +6,7 @@ import "./Card.css";
 const Card = () => {
   return (
     <div className="container-card">
-      <Logo/>
+      <LogoLogin />
       <InputName />
       <InputPassword />
       <Button />

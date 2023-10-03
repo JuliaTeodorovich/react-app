@@ -13,14 +13,28 @@
   padding-left: 10px;
 }
 
+.input:hover {
+  opacity: 0.85;
+}
+
 .input::placeholder {
   color: #44b26f;
 }
 
 .logo-password {
-  width: 45px;
+  width: 34px;
   position: relative;
-  left: 335px;
-  top: 41px;
+  left: 340px;
+  top: 37px;
   cursor: pointer;
+}
+
+.logo {
+  color: #44b26f;
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.logo:hover {
+  transform: scale(1.08);
 }

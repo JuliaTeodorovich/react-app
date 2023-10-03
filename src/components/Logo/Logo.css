@@ -1,8 +1,22 @@
 .logo-login {
-    width: 280px;
-    height: 40px;
-    position: relative;
-    top: 52px;
-    left: 90px;
-    cursor: pointer;
-  }
+  position: relative;
+  width: 280px;
+  height: 40px;
+  top: 52px;
+  left: 90px;
+  cursor: pointer;
+}
+
+.logo-table {
+  position: relative;
+  width: 240px;
+  height: 40px;
+  top: 20px;
+  left: 29px;
+  cursor: pointer;
+}
+
+.logo-table:hover,
+.logo-login:hover {
+  opacity: 0.85;
+}
