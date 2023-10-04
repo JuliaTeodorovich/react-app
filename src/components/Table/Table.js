@@ -3,30 +3,7 @@ import { PiArrowsDownUpFill } from "react-icons/pi";
 import { BsPencilFill } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 
-const Table = () => {
-  const products = [
-    {
-      id: 0,
-      category: "PC",
-      name: "Lenovo Y50-70",
-      quantity: 5,
-      price: 25000,
-    },
-    {
-      id: 1,
-      category: "Clothes",
-      name: "Nike M Nk Df Acd21",
-      quantity: 22,
-      price: 4000,
-    },
-    {
-      id: 2,
-      category: "Plumbing",
-      name: "CERSANIT MITO 17",
-      quantity: 1337,
-      price: 5000,
-    },
-  ];
+const Table = ({ products }) => {
   return (
     <div className="container-table">
       <table>
