@@ -12,3 +12,7 @@
   line-height: 29px;
   letter-spacing: 0em;
 }
+
+.btn-confirm:hover {
+  opacity: 0.85;
+}

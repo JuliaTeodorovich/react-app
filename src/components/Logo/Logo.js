@@ -1,12 +1,11 @@
-import logoImage from "../../assets/Logo_login.svg";
-import "./Logo.css"
+import "./Logo.css";
 
-function Logo() {
+const Logo = ({ src, className }) => {
   return (
-    <div className="logo-login">
-      <img src={logoImage} alt="Logo" />
+    <div className={`logo ${className}`}>
+      <img src={src} alt="Logo" />
     </div>
   );
-}
+};
 
 export default Logo;

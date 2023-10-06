@@ -1,0 +1,54 @@
+.container-table {
+  background: #f5f5f5;
+  width: 872px;
+  margin: 60px auto;
+}
+
+table {
+  background: #d9d9d9;
+  border-spacing: 0ch;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+thead {
+  background: #0ec86f;
+  border: none;
+}
+
+th,
+td {
+  width: 246px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+th {
+  color: #726969;
+}
+
+tr {
+  height: 39px;
+}
+
+.odd-line {
+  background: #3cd78c;
+  color: #a58f8f;
+}
+
+.logo-arrow {
+  height: 0.9em;
+  cursor: pointer;
+}
+
+.logo {
+  color: black;
+  cursor: pointer;
+  margin: 3px;
+}
+.logo-arrow:hover,
+.logo:hover {
+  opacity: 0.7;
+}
