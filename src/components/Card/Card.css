@@ -3,3 +3,13 @@
   width: 480px;
   height: 570px;
 }
+
+.error-message {
+  font-size: 15px;
+  color: red;
+}
+
+.success-message {
+  font-size: 15px;
+  color: green;
+}
