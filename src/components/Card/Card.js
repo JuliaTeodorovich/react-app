@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import "./Card.css";
 
-const Card = ({ onLogin, users }) => {
+const Card = () => {
   const [formFields, setFormFields] = useState({
     name: "",
     password: "",
@@ -16,50 +16,64 @@ const Card = ({ onLogin, users }) => {
     password: "",
   });
 
+  const [errorVisible, setErrorVisible] = useState(false);
+  const [successVisible, setSuccessVisible] = useState(false);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields((prevFormFields) => ({
       ...prevFormFields,
       [name]: value,
     }));
-    onLogin();
+    setErrors({});
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrorVisible(false);
+    setSuccessVisible(false);
     const newErrors = {};
-    document.querySelector(".error-message").innerText = "";
-    document.querySelector(".success-message").innerText = "";
     newErrors.name = "";
     newErrors.password = "";
 
     if (!formFields.name.trim()) {
       newErrors.name = "is required";
     }
-
     if (!formFields.password.trim()) {
       newErrors.password = "is required";
     }
     setErrors(newErrors);
 
-    if (!newErrors.name && !newErrors.password) {
-      const authenticatedUser = users.find(
-        (user) =>
-          user.name === formFields.name && user.password === formFields.password
+    try {
+      const response = await fetch(
+        `http://localhost:${process.env.REACT_APP_DATA}/api/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: formFields.name,
+            password: formFields.password,
+          }),
+        }
       );
-      if (authenticatedUser) {
-        document.querySelector(".error-message").innerText = "";
-        document.querySelector(".success-message").innerText =
-          "Login successful!";
-        localStorage.setItem(
-          "token",
-          `User Name:${formFields.name}. Password:${formFields.password}.`
-        );
-      } else {
-        document.querySelector(".error-message").innerText =
-          "Incorrect username or password";
-        document.querySelector(".success-message").innerText = "";
+      if (!newErrors.name && !newErrors.password) {
+        if (response.ok) {
+          const data = await response.json();
+          localStorage.setItem("token", data.token);
+          setSuccessVisible(true);
+          setErrorVisible(false);
+        } else {
+          setErrorVisible(true);
+          setSuccessVisible(false);
+          setErrors({
+            general: "Login failed. Please check your credentials.",
+          });
+        }
       }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
@@ -87,8 +101,12 @@ const Card = ({ onLogin, users }) => {
           showPasswordIcon={true}
         />
         <Button />
-        <div className="error-message"></div>
-        <div className="success-message"></div>
+        {errorVisible && (
+          <div className="error-message">Incorrect username or password</div>
+        )}
+        {successVisible && (
+          <div className="success-message">Login successful!</div>
+        )}
       </form>
     </div>
   );
