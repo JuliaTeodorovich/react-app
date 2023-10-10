@@ -1,0 +1,70 @@
+.preview-card {
+  width: 203px;
+  height: 276px;
+  background: #ffffff;
+  margin: 18px 55px;
+  padding: 0 12px;
+}
+
+p {
+  margin: 0;
+}
+
+.img {
+  width: 149px;
+  height: 109px;
+  margin: 10px;
+}
+
+.descr {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+  cursor: pointer;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 0;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #fc5b00;
+}
+
+.amount {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #000000;
+}
+
+.btn-send {
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.logo {
+  color: #05bc52;
+}
+
+.ready-to-send {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #05bc52;
+}

@@ -3,12 +3,17 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const users = require("./data/users.json");
+const products = require("./data/products.json");
 const { PORT, JWT_SECRET } = require("dotenv").config().parsed;
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.get("/api/products", function (request, response) {
+  response.send(200, products);
+});
 
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
