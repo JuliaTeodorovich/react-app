@@ -18,6 +18,7 @@ const Card = () => {
 
   const [errorVisible, setErrorVisible] = useState(false);
   const [successVisible, setSuccessVisible] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -77,6 +78,10 @@ const Card = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <div className="container-card">
       <Logo src={logoImageLogin} className="logo-login" />
@@ -91,7 +96,7 @@ const Card = () => {
           placeholder={`User Name ${errors.name ? errors.name : ""}`}
         />
         <Input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           id="password"
           name="password"
           value={formFields.password}
@@ -99,6 +104,8 @@ const Card = () => {
           className={`input ${errors.password ? "error" : ""}`}
           placeholder={`Password ${errors.password ? errors.password : ""}`}
           showPasswordIcon={true}
+          passwordVisible={passwordVisible}
+          onTogglePasswordVisibility={togglePasswordVisibility}
         />
         <Button />
         {errorVisible && (

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import "./ProductsTable.css";
 import Logo from "../../components/Logo/Logo";
 import logoImageTable from "../../assets/Logo_table.svg";
@@ -7,29 +8,20 @@ import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 
 function ProductsTable() {
-  const products = [
-    {
-      id: 0,
-      category: "PC",
-      name: "Lenovo Y50-70",
-      quantity: 5,
-      price: 25000,
-    },
-    {
-      id: 1,
-      category: "Clothes",
-      name: "Nike M Nk Df Acd21",
-      quantity: 22,
-      price: 4000,
-    },
-    {
-      id: 2,
-      category: "Plumbing",
-      name: "CERSANIT MITO 17",
-      quantity: 1337,
-      price: 5000,
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const apiUrl = `http://localhost:${process.env.REACT_APP_DATA}/api/products`;
+
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
 
   return (
     <div className="Table">
