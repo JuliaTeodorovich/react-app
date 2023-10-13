@@ -1,40 +1,42 @@
 import React, { useState, useEffect } from "react";
 import "./ProductsPreview.css";
-import Logo from "../../components/Logo/Logo";
-import logoImageTable from "../../assets/Logo_table.svg";
+import { Link } from "react-router-dom";
+import { API_URL } from "../../constants/const";
+import Header from "../../components/Header/Header";
 import PreviewCard from "../../components/PreviewCards/PreviewCards";
+import { BsArrowLeft } from "react-icons/bs";
 
 function ProductsPreview() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const apiUrl = `http://localhost:${process.env.REACT_APP_DATA}/api/products`;
+    const apiUrl = `${API_URL}/api/products`;
 
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
         setProducts(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching data:", error);
-      });
-  }, []);
+      }
+    };
 
-  const filteredProducts = products.filter((product) => product.id === 0);
+    fetchData();
+  }, []);
 
   return (
     <div className="Preview">
-      <header className="Preview-header">
-        <Logo src={logoImageTable} className="logo-table" />
-        <div className="Preview-block">
-          <PreviewCard products={filteredProducts} />
-          <PreviewCard products={filteredProducts} />
-          <PreviewCard products={filteredProducts} />
-          <PreviewCard products={filteredProducts} />
-          <PreviewCard products={filteredProducts} />
-          <PreviewCard products={filteredProducts} />
-        </div>
-      </header>
+      <Header />
+      <Link to={"/products-table"}>
+        <BsArrowLeft className="arrow-preview" />{" "}
+      </Link>{" "}
+      <PreviewCard products={products} />
     </div>
   );
 }

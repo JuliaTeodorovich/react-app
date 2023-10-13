@@ -1,9 +1,22 @@
+.preview-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 1100px;
+  margin: 0 auto;
+}
+
 .preview-card {
   width: 203px;
   height: 276px;
   background: #ffffff;
   margin: 18px 55px;
   padding: 0 12px;
+  cursor: pointer;
+}
+.preview-card:hover {
+  transform: scale(1.05);
 }
 
 p {
@@ -16,14 +29,13 @@ p {
   margin: 10px;
 }
 
-.descr {
+.descr-prew {
   font-size: 16px;
   font-weight: 500;
   line-height: 19px;
   letter-spacing: 0em;
   text-align: center;
   color: #000000;
-  cursor: pointer;
 }
 
 .info {
@@ -53,10 +65,10 @@ p {
 .btn-send {
   display: flex;
   justify-content: space-around;
-  cursor: pointer;
+  align-items: center;
 }
 
-.logo {
+.logo-prew {
   color: #05bc52;
 }
 
