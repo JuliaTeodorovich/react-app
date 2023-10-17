@@ -7,11 +7,11 @@ import { BsArrowLeft } from "react-icons/bs";
 import { BsPatchCheck } from "react-icons/bs";
 
 const ProductDescription = () => {
-  const [products, setProducts] = useState([]);
-  let { productId } = useParams();
-  productId = Number(productId);
+  const [product, setProducts] = useState([]);
+  const { id } = useParams();
+
   useEffect(() => {
-    const apiUrl = `${API_URL}/api/products`;
+    const apiUrl = `${API_URL}/api/products/${id}`;
 
     const fetchData = async () => {
       try {
@@ -29,50 +29,44 @@ const ProductDescription = () => {
     };
 
     fetchData();
-  }, []);
-
-  const filteredProducts = products.filter(
-    (product) => product.id === Number(productId)
-  );
+  }, [id]);
 
   return (
     <div className="Product-description">
-      <Header />{" "}
-      {filteredProducts.map((item) => (
-        <div key={item.id}>
-          <div className="description-block">
-            <div className="info-header">
-              <Link to={"/products-preview"}>
-                <BsArrowLeft className="arrow" />{" "}
-              </Link>{" "}
-              <p className="info-header-name">{item.description}</p>{" "}
+      <Header />
+      <div key={product.id}>
+        <div className="description-block">
+          <div className="info-header">
+            <Link to={"/products-preview"}>
+              <BsArrowLeft className="arrow" />{" "}
+            </Link>{" "}
+            <p className="info-header-name">{product.description}</p>{" "}
+          </div>
+          <div className="info-descr">
+            <img src={product.img} className="img-descr" alt="product" />
+            <div className="info-descr-text">
+              <p className="status-desrc">
+                {" "}
+                <BsPatchCheck className="check-status" />Є в наявності
+              </p>
+              <p className="price-desrc">{product.price}₴</p>
+              <p className="amount-desrc">Кількість: {product.quantity}</p>
             </div>
-            <div className="info-descr">
-              <img src={item.img} className="img-descr" alt="product" />
-              <div className="info-descr-text">
-                <p className="status-desrc">
-                  {" "}
-                  <BsPatchCheck className="check-status" />Є в наявності
-                </p>
-                <p className="price-desrc">{item.price}₴</p>
-                <p className="amount-desrc">Кількість: {item.quantity}</p>
-              </div>
-            </div>
+          </div>
+          <div>
             <div>
-              <div>
-                <span className="info-header-name">Опис</span>
-                <span className="info-name">{item.description}</span>
-              </div>
-              <p className="info-text bold">{item.descrName1}</p>
-              <p className="info-text">{item.descr1}</p>
-              <p className="info-text bold">{item.descrName2}</p>
-              <p className="info-text">{item.descr2}</p>
-              <p className="info-text bold">{item.descrName3}</p>
-              <p className="info-text">{item.descr3}</p>
+              <span className="info-header-name">Опис</span>
+              <span className="info-name">{product.description}</span>
             </div>
-          </div>{" "}
-        </div>
-      ))}
+            <p className="info-text bold">{product.descrName1}</p>
+            <p className="info-text">{product.descr1}</p>
+            <p className="info-text bold">{product.descrName2}</p>
+            <p className="info-text">{product.descr2}</p>
+            <p className="info-text bold">{product.descrName3}</p>
+            <p className="info-text">{product.descr3}</p>
+          </div>
+        </div>{" "}
+      </div>
     </div>
   );
 };

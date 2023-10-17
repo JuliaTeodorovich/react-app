@@ -13,7 +13,7 @@ const AppRouter = () => (
         <Route path="/products-table" element={<ProductsTable />} />
         <Route path="/products-preview" element={<ProductsPreview />} />
         <Route
-          path="/products-description/:productId"
+          path="/products-description/:id"
           element={<ProductDescription />}
         />
       </Route>
