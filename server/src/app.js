@@ -15,6 +15,17 @@ app.get("/api/products", function (request, response) {
   response.send(200, products);
 });
 
+app.get("/api/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const product = products.find((p) => p.id === productId);
+
+  if (!product) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  res.json(product);
+});
+
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
   const user = users.find(

@@ -4,6 +4,7 @@ import logoImageLogin from "../../assets/Logo_login.svg";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import "./Card.css";
+import { useNavigate } from "react-router-dom";
 
 const Card = () => {
   const [formFields, setFormFields] = useState({
@@ -19,6 +20,7 @@ const Card = () => {
   const [errorVisible, setErrorVisible] = useState(false);
   const [successVisible, setSuccessVisible] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -63,6 +65,7 @@ const Card = () => {
         if (response.ok) {
           const data = await response.json();
           localStorage.setItem("token", data.token);
+          navigate("/products-table");
           setSuccessVisible(true);
           setErrorVisible(false);
         } else {
