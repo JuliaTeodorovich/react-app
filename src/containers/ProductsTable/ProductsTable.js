@@ -31,6 +31,16 @@ function ProductsTable() {
     fetchProducts();
   }, []);
 
+  const deleteItem = async (id) => {
+    const apiUrl = `${API_URL}/api/products/${id}`;
+    await fetch(apiUrl, {
+      method: "DELETE",
+    });
+
+    const updatedProducts = products.filter((item) => item.id !== id);
+    setProducts(updatedProducts);
+  };
+
   return (
     <div className="Table">
       <Header />
@@ -48,7 +58,7 @@ function ProductsTable() {
         />
       </div>
       <h2 className="header">Products</h2>
-      <Table products={products} />
+      <Table products={products} onDelete={deleteItem} />
     </div>
   );
 }
