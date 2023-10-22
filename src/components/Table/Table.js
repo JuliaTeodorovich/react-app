@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import "./Table.css";
 import { PiArrowsDownUpFill } from "react-icons/pi";
 import { BsPencilFill } from "react-icons/bs";
@@ -21,8 +22,9 @@ const style = {
 };
 
 const Table = ({ products, onDelete }) => {
-  const [open, setOpen] = React.useState(false);
-  const [deleteId, setDeleteId] = React.useState(null);
+  const [open, setOpen] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+
   const handleOpen = (id) => {
     setDeleteId(id);
     setOpen(true);
@@ -32,7 +34,7 @@ const Table = ({ products, onDelete }) => {
     setOpen(false);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     onDelete(deleteId);
     handleClose();
   };
