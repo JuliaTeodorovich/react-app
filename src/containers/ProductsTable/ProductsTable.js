@@ -10,26 +10,42 @@ import { Link } from "react-router-dom";
 
 function ProductsTable() {
   const [products, setProducts] = useState([]);
+  const [isProductsLoaded, setIsProductsLoaded] = useState(false);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const apiUrl = `${API_URL}/api/products`;
-        const response = await fetch(apiUrl);
+    if (!isProductsLoaded) {
+      fetchProducts();
+    }
+  }, [isProductsLoaded]);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+  const fetchProducts = async () => {
+    try {
+      const apiUrl = `${API_URL}/api/products`;
+      const response = await fetch(apiUrl);
 
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    };
 
-    fetchProducts();
-  }, []);
+      const data = await response.json();
+      setProducts(data);
+      setIsProductsLoaded(true);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const deleteItem = async (id) => {
+    const apiUrl = `${API_URL}/api/products/${id}`;
+    try {
+      await fetch(apiUrl, {
+        method: "DELETE",
+      });
+      setIsProductsLoaded(false);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
 
   return (
     <div className="Table">
@@ -48,7 +64,7 @@ function ProductsTable() {
         />
       </div>
       <h2 className="header">Products</h2>
-      <Table products={products} />
+      <Table products={products} onDelete={deleteItem} />
     </div>
   );
 }

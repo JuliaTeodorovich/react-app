@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 import logoImageLogin from "../../assets/Logo_login.svg";
-import Button from "../Button/Button";
+import Button from "../ButtonLogin/ButtonLogin";
 import Input from "../Input/Input";
 import "./Card.css";
 import { useNavigate } from "react-router-dom";
