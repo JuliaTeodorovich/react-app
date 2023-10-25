@@ -1,0 +1,65 @@
+.block-title-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#modal-modal-title {
+  font-weight: 700;
+  line-height: 19px;
+  letter-spacing: 0em;
+  background: #ffffff;
+  padding: 20px;
+}
+
+.delete-title {
+  color: #05bc52;
+  text-align: center;
+  font-size: 20px;
+}
+
+.edit-title {
+  color: #d9d9d9;
+}
+
+.close {
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.btns-modal {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 20px;
+}
+
+.btn-modal {
+  width: 115px;
+  height: 33px;
+  padding: 7px, 30px, 7px, 30px;
+  color: #ffffff;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.delete {
+  background: #fb0000;
+}
+
+.cancel-delete {
+  background: #d8d5d5;
+}
+
+.cancel-edit {
+  background: #726969;
+}
+
+.submit {
+  background: #44b26f;
+}
