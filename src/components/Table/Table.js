@@ -1,44 +1,10 @@
 import * as React from "react";
-import { useState } from "react";
 import "./Table.css";
 import { PiArrowsDownUpFill } from "react-icons/pi";
 import { BsPencilFill } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import ButtonModal from "../ButtonsModal/ButtonsModal";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "none",
-  boxShadow: 4,
-  p: 6,
-};
-
-const Table = ({ products, onDelete }) => {
-  const [open, setOpen] = useState(false);
-  const [deleteId, setDeleteId] = useState(null);
-
-  const handleOpen = (id) => {
-    setDeleteId(id);
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setDeleteId(null);
-    setOpen(false);
-  };
-
-  const handleDelete = () => {
-    onDelete(deleteId);
-    handleClose();
-  };
-
+const Table = ({ products, onDelete, onEdit }) => {
   return (
     <div className="container-table">
       <table>
@@ -81,42 +47,16 @@ const Table = ({ products, onDelete }) => {
               </td>
               <td className="btns-edit-del">
                 <div>
-                  <BsPencilFill className="logo pen" />
+                  <BsPencilFill
+                    onClick={() => onEdit(item)}
+                    className="logo pen"
+                  />
                 </div>
                 <div>
                   <MdDelete
-                    onClick={() => handleOpen(item.id)}
+                    onClick={() => onDelete(item.id)}
                     className="logo del"
                   />
-                  <Modal
-                    open={open}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    BackdropProps={{
-                      style: { backgroundColor: "transparent" },
-                    }}>
-                    <Box sx={style}>
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2">
-                        Are u sure you want to delete this product?
-                      </Typography>
-                      <div className="btns-modal">
-                        {" "}
-                        <ButtonModal
-                          color="btn-modal cancel-delete"
-                          text="Cancel"
-                          onClick={handleClose}
-                        />
-                        <ButtonModal
-                          color="btn-modal delete"
-                          text="Delete"
-                          onClick={() => handleDelete(item.id)}
-                        />
-                      </div>
-                    </Box>
-                  </Modal>
                 </div>
               </td>
             </tr>

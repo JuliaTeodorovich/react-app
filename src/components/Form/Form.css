@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #d9d9d9;
+  padding: 40px;
+}
+
+.form label {
+  color: #fff;
+}
+
+.form input {
+  color: #05bc52;
+  border: none;
+  width: 410px;
+  height: 31px;
+  padding: 0 0 0 20px;
+}
+
+.form .description-input {
+  height: 117px;
+}
+
+.form label,
+.form input {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 17px;
+  letter-spacing: 0em;
+  text-align: left;
+}
