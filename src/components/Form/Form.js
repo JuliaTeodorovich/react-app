@@ -3,7 +3,11 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 
 const FormModal = ({ product, isOpen, onSubmit }) => {
-  return isOpen ? (
+  if (!isOpen) {
+    return null;
+  }
+
+  return (
     <div className="modal">
       <div className="modal-content">
         <Formik
@@ -46,7 +50,7 @@ const FormModal = ({ product, isOpen, onSubmit }) => {
         </Formik>
       </div>
     </div>
-  ) : null;
+  );
 };
 
 export default FormModal;
