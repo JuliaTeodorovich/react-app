@@ -31,3 +31,7 @@
   letter-spacing: 0em;
   text-align: left;
 }
+
+.error-message {
+  font-size: 12px;
+}
