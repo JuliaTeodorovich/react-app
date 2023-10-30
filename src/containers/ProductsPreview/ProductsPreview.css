@@ -1,0 +1,17 @@
+.Preview {
+  text-align: center;
+  background: #44b26f;
+  min-height: 99.5vh;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.arrow-preview {
+  width: 70px;
+  height: 50px;
+  color: black;
+  margin-right: 40px;
+  position: absolute;
+  left: 45px;
+  top: 83px;
+}

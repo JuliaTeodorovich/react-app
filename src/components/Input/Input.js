@@ -1,19 +1,42 @@
 import "./Input.css";
-import logoImage from "../../assets/Logo_password.svg";
+import { AiFillEye } from "react-icons/ai";
+import { AiFillEyeInvisible } from "react-icons/ai";
+import "./Input.css";
 
-const InputName = () => {
-  return <input type="text" className="input name" placeholder="Ures Name"></input>;
-};
-
-const InputPassword = () => {
+const Input = ({
+  type,
+  id,
+  name,
+  value,
+  onChange,
+  className,
+  placeholder,
+  showPasswordIcon,
+  passwordVisible,
+  onTogglePasswordVisibility,
+}) => {
   return (
-    <div>
-      <input type="password" className="input password" placeholder="Password"></input>
-      <div className="logo-password">
-        <img src={logoImage} alt="Logo" />
-      </div>
+    <div className="input-container">
+      <input
+        type={type}
+        id={id}
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={className}
+        placeholder={placeholder}
+      />
+      {showPasswordIcon && (
+        <div className="logo-password" onClick={onTogglePasswordVisibility}>
+          {passwordVisible ? (
+            <AiFillEyeInvisible className="logo" />
+          ) : (
+            <AiFillEye className="logo" />
+          )}
+        </div>
+      )}
     </div>
   );
 };
 
-export { InputName, InputPassword };
+export default Input;
