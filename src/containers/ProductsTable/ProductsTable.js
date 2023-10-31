@@ -24,7 +24,7 @@ function ProductsTable() {
     }
   }, [isProductsLoaded]);
 
-  const fetchProducts = async () => {
+  const fetchProducts = async (newProduct) => {
     try {
       const apiUrl = `${API_URL}/api/products`;
       const response = await fetch(apiUrl);
@@ -34,7 +34,8 @@ function ProductsTable() {
       }
 
       const data = await response.json();
-      setProducts(data);
+      const updatedProducts = newProduct ? [...data, newProduct] : data;
+      setProducts(updatedProducts);
       setIsProductsLoaded(true);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -73,7 +74,7 @@ function ProductsTable() {
       });
 
       if (response.ok) {
-        setProducts([...products, newProduct]);
+        fetchProducts(newProduct);
       } else {
         console.error("Error adding product:", response.status);
       }
@@ -93,13 +94,14 @@ function ProductsTable() {
         body: JSON.stringify(product),
       });
       if (response.ok) {
-        fetchProducts();
-        handleCloseEditModal();
+        await fetchProducts();
       } else {
         console.error("Error updating product:", response.status);
       }
     } catch (error) {
       console.error("Error updating product:", error);
+    } finally {
+      handleCloseEditModal();
     }
   };
 
