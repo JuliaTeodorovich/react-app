@@ -32,8 +32,8 @@
   {
     "id": 2,
     "category": "Appliance",
-    "img": "https://images.samsung.com/is/image/samsung/ru-microwave-oven-solo-ms23f302tqs-ms23f302tqs-bw-001-front-silver?$650_519_PNG$",
     "name": "SAMSUNG 614AK/BW",
+    "img": "https://images.samsung.com/is/image/samsung/ru-microwave-oven-solo-ms23f302tqs-ms23f302tqs-bw-001-front-silver?$650_519_PNG$",
     "quantity": 1337,
     "price": 5000,
     "description": "Мікрохвильова піч SAMSUNG 614AK/BW",
@@ -47,8 +47,8 @@
   {
     "id": 3,
     "category": "Appliance",
-    "img": "https://content2.rozetka.com.ua/goods/images/big/358934435.jpg",
     "name": "KRUPS Essential EA816570",
+    "img": "https://content2.rozetka.com.ua/goods/images/big/358934435.jpg",
     "quantity": 504,
     "price": 8000,
     "description": "Кавомашина KRUPS Essential EA816570",
@@ -62,8 +62,8 @@
   {
     "id": 4,
     "category": "TV",
-    "img": "https://content2.rozetka.com.ua/goods/images/big/364079725.jpg",
     "name": "Sharp 55EQ4EA (4T-C55EQ4EM2AG)",
+    "img": "https://content2.rozetka.com.ua/goods/images/big/364079725.jpg",
     "quantity": 98,
     "price": 29000,
     "description": "Телевізор Sharp 55EQ4EA (4T-C55EQ4EM2AG)",
@@ -77,8 +77,8 @@
   {
     "id": 5,
     "category": "Appliance",
-    "img": "https://dzvinok.ua/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/r/o/rowenta_cv9920f0_ultimate_experience_maestria-foto1.webp",
     "name": "Rowenta T-SHAPE MAESTRIA CV9920F0",
+    "img": "https://dzvinok.ua/pub/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/r/o/rowenta_cv9920f0_ultimate_experience_maestria-foto1.webp",
     "quantity": 756,
     "price": 6000,
     "description": "Фен Rowenta T-SHAPE MAESTRIA CV9920F0",

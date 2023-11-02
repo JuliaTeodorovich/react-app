@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -15,6 +15,7 @@ const ProductModal = ({
   onCancel,
   onSubmit,
 }) => {
+  const formModalRef = useRef(null);
   let title = "";
   let confirmText = "";
   let bgColor = "background.paper";
@@ -52,8 +53,14 @@ const ProductModal = ({
   const handleSubmit = () => {
     if (action === "delete") {
       onSubmit();
-    } else {
-      onSubmit(product);
+    } else if (action === "add") {
+      if (formModalRef.current) {
+        const newProduct = formModalRef.current.getFormValues();
+        onSubmit(newProduct);
+      }
+    } else if (action === "edit") {
+      const updatedProduct = formModalRef.current.getFormValues();
+      onSubmit(updatedProduct);
     }
   };
 
@@ -91,21 +98,23 @@ const ProductModal = ({
             />
           </div>
         )}
-        <div className="btns-modal">
-          <ButtonModal
-            color={`btn-modal ${
-              action === "delete" ? "cancel-delete" : "cancel-edit"
-            }`}
-            text="Cancel"
-            onClick={onCancel}
-          />
-          <ButtonModal
-            color={`btn-modal ${action === "delete" ? "delete" : "submit"}`}
-            text={confirmText}
-            type="submit"
-            onClick={handleSubmit}
-          />
-        </div>
+        {action === "delete" && (
+          <div className="btns-modal">
+            <ButtonModal
+              color={`btn-modal ${
+                action === "delete" ? "cancel-delete" : "cancel-edit"
+              }`}
+              text="Cancel"
+              onClick={onCancel}
+            />
+            <ButtonModal
+              color={`btn-modal ${action === "delete" ? "delete" : "submit"}`}
+              text={confirmText}
+              type="submit"
+              onClick={handleSubmit}
+            />
+          </div>
+        )}
       </Box>
     </Modal>
   );

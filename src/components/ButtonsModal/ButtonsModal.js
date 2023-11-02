@@ -1,6 +1,6 @@
-const ButtonModal = ({ color, text, onClick }) => {
+const ButtonModal = ({ color, text, onClick, type }) => {
   return (
-    <button onClick={onClick} className={color}>
+    <button onClick={onClick} className={color} type={type}>
       {text}
     </button>
   );

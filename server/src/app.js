@@ -50,6 +50,56 @@ app.delete("/api/products/:id", (req, res) => {
   res.send(200, products);
 });
 
+app.post("/api/products", (req, res) => {
+  fs.readFile(fileName, "utf8", (err, data) => {
+    if (err) {
+      res.status(500).json({ error: "Failed to read products" });
+    } else {
+      const products = JSON.parse(data);
+      const newProduct = req.body;
+      newProduct.id = generateUniqueProductId(products);
+      products.push(newProduct);
+
+      fs.writeFile(fileName, JSON.stringify(products), (err) => {
+        if (err) {
+          res.status(500).json({ error: "Failed to add product" });
+        } else {
+          res.json({ message: "Product added successfully" });
+        }
+      });
+    }
+  });
+});
+
+function generateUniqueProductId(products) {
+  const highestId = products.reduce((maxId, product) => {
+    return product.id > maxId ? product.id : maxId;
+  }, 0);
+
+  return highestId + 1;
+}
+
+app.put("/api/products/:id", (req, res) => {
+  const productId = parseInt(req.params.id);
+  const updatedProduct = req.body;
+  const productIndex = products.findIndex(
+    (product) => product.id === productId
+  );
+
+  if (productIndex === -1) {
+    return res.status(404).json({ error: "Product not found" });
+  }
+
+  products[productIndex] = updatedProduct;
+  fs.writeFile(fileName, JSON.stringify(products, null, 2), "utf8", (err) => {
+    if (err) {
+      res.status(500).json({ error: "Failed to update product" });
+    } else {
+      res.json({ message: "Product updated successfully" });
+    }
+  });
+});
+
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
   const user = users.find(
